@@ -73,8 +73,8 @@ class App extends Component<{}, IState> {
             // As part of your task, update the getDataFromServer() function
             // to keep requesting the data every 100ms until the app is closed
             // or the server does not return anymore data.
-            onClick={() => {
-              this.getDataFromServer()
+              onClick={() => {
+                this.getDataFromServer()
               }}>
             Start Streaming Data
           </button>

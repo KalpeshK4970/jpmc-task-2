@@ -7,8 +7,8 @@ import './App.css';
  * State declaration for <App />
  */
 interface IState {
-  data: ServerRespond[],
-  showGraph: boolean
+    data: ServerRespond[],
+    showGraph: boolean
 }
 
 /**
@@ -17,13 +17,13 @@ interface IState {
  */
 class App extends Component<{}, IState> {
   constructor(props: {}) {
-    super(props);
+      super(props);
 
-    this.state = {
-      // data saves the server responds.
-      // We use this state to parse data down to the child element (Graph) as element property
-      data: [],
-      showGraph: false,
+      this.state = {
+        // data saves the server responds.
+        // We use this state to parse data down to the child element (Graph) as element property
+          data: [],
+          showGraph: false
     };
   }
 
@@ -31,9 +31,9 @@ class App extends Component<{}, IState> {
    * Render Graph react component with state.data parse as property data
    */
   renderGraph() {
-  if(this.state.showGraph){
-    return (<Graph data={this.state.data}/>)
-    }
+    if(this.state.showGraph){
+       return (<Graph data={this.state.data}/>)
+      }
   }
 
   /**
@@ -42,17 +42,17 @@ class App extends Component<{}, IState> {
   getDataFromServer() {
   let x = 0;
   const interval = setInterval (() => {
-    DataStreamer.getData((serverResponds: ServerRespond[]) => {
-      // Update the state by creating a new array of data that consists of
-      // Previous data in the state and the new data from server
-      this.setState({
-       data: serverResponds,
-       showGraph: true,
-       });
+      DataStreamer.getData((serverResponds: ServerRespond[]) => {
+        // Update the state by creating a new array of data that consists of
+        // Previous data in the state and the new data from server
+          this.setState({
+            data: serverResponds,
+            showGraph: true,
+          });
     });
     x++;
     if(x > 1000){
-    clearInterval(interval);
+      clearInterval(interval);
     }
     },100);
   }
@@ -73,7 +73,9 @@ class App extends Component<{}, IState> {
             // As part of your task, update the getDataFromServer() function
             // to keep requesting the data every 100ms until the app is closed
             // or the server does not return anymore data.
-            onClick={() => {this.getDataFromServer()}}>
+            onClick={() => {
+              this.getDataFromServer()
+              }}>
             Start Streaming Data
           </button>
           <div className="Graph">
